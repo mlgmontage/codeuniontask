@@ -1,7 +1,7 @@
 import React from "react";
 
 const App = () => {
-  return <div>Hello, codeunion</div>;
+  return <div className="text-red-500">Hello, codeunion</div>;
 };
 
 export default App;
