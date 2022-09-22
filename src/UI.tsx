@@ -14,6 +14,10 @@ export const Button = styled.button`
   line-height: 20px;
   font-weight: 500;
   text-align: center;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
 const ModalBoxUI = styled.div`
@@ -49,7 +53,7 @@ export const ModalPanel = styled.div`
   background-color: #f9fafb;
   border-radius: 25px;
   width: 526px;
-  padding: 54px 60px;
+  padding: 60px 54px;
 `;
 
 export const ModalTitle = styled.h2`

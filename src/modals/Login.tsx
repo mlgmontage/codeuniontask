@@ -12,7 +12,10 @@ type LoginFormT = {
 };
 
 const loginScheme = Yup.object().shape({
-  login: Yup.string().min(3, "Не меньше чем 3 символа").required("Обязательно"),
+  login: Yup.string()
+    .min(3, "Не меньше чем 3 символа")
+    .email("Должно быть эл-почтой")
+    .required("Обязательно"),
   password: Yup.string()
     .min(7, "Не меньше чес 7 символов")
     .required("Обязательно"),
