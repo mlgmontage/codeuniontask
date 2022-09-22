@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import close from "./assets/close.svg";
 
@@ -14,7 +15,7 @@ export const Button = styled.button`
   text-align: center;
 `;
 
-export const ModalBox = styled.div`
+const ModalBoxUI = styled.div`
   position: absolute;
   width: 100%;
   height: 100vh;
@@ -23,6 +24,25 @@ export const ModalBox = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
 `;
+
+type ModalBoxProps = {
+  children?: React.ReactNode;
+};
+
+export const ModalBox: React.FC<ModalBoxProps> = ({ children }) => {
+  // NOTE: removing scrolling when modal is opened
+  useEffect(() => {
+    const body = document.getElementById("body");
+    body?.classList.add("overflow-hidden");
+    console.warn("overflow");
+
+    return () => {
+      body?.classList.remove("overflow-hidden");
+    };
+  }, []);
+
+  return <ModalBoxUI>{children}</ModalBoxUI>;
+};
 
 export const ModalPanel = styled.div`
   position: relative;
