@@ -12,13 +12,19 @@ const Jumbotron = () => {
           ресторана
         </h1>
         <div className="w-full flex justify-between p-[36px] h-[131px] rounded-lg bg-white">
-          <div className="border border-lightGray rounded-sm flex px-[18px]">
+          <div className="border border-lightGray rounded-sm flex px-[18px] w-[410px]">
             <input
               placeholder="Город, адрес, шоссе или ЖК"
               tabIndex={0}
-              className="focus:outline-none"
+              className="focus:outline-none w-full"
             />
-            <img src={lens} alt="lens" />
+            <img
+              src={lens}
+              width="20"
+              height="20"
+              alt="lens"
+              className="cursor-pointer"
+            />
           </div>
           <Button className="py-5 w-[200px] rounded-sm">Найти</Button>
         </div>

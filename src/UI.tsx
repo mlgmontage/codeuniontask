@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// NOTE: Here's UI kit
+
 export const Button = styled.button`
   border: none;
   background-color: #3782da;

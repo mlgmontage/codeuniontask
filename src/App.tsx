@@ -5,7 +5,7 @@ import Main from "./components/Main";
 
 const App = () => {
   return (
-    <div className="text-red-500">
+    <div>
       <Header />
       <Jumbotron />
       <Main />
