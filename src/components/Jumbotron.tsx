@@ -1,4 +1,6 @@
 import React from "react";
+import lens from "../assets/lens.svg";
+import { Button } from "../UI";
 
 const Jumbotron = () => {
   return (
@@ -9,7 +11,17 @@ const Jumbotron = () => {
           <br />
           ресторана
         </h1>
-        <div className="w-full flex justify-between p-[36px] h-[131px] rounded-lg bg-white"></div>
+        <div className="w-full flex justify-between p-[36px] h-[131px] rounded-lg bg-white">
+          <div className="border border-lightGray rounded-sm flex px-[18px]">
+            <input
+              placeholder="Город, адрес, шоссе или ЖК"
+              tabIndex={0}
+              className="focus:outline-none"
+            />
+            <img src={lens} alt="lens" />
+          </div>
+          <Button className="py-5 w-[200px] rounded-sm">Найти</Button>
+        </div>
       </div>
     </div>
   );

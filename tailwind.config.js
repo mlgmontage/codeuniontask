@@ -6,11 +6,14 @@ module.exports = {
     colors: {
       blue: '#3782DA',
       gray: '#9494A0',
+      lightGray: '#C1C1CB',
       dark: '#424F5E',
       white: '#FFFFFF'
     },
     borderRadius: {
       none: '0',
+      xs: '10px',
+      sm: '15px',
       DEFAULT: '20px',
       lg: '25px'
     },
