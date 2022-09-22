@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+
 import close from "./assets/close.svg";
 
 // NOTE: Here's UI kit
@@ -34,7 +35,6 @@ export const ModalBox: React.FC<ModalBoxProps> = ({ children }) => {
   useEffect(() => {
     const body = document.getElementById("body");
     body?.classList.add("overflow-hidden");
-    console.warn("overflow");
 
     return () => {
       body?.classList.remove("overflow-hidden");
@@ -58,6 +58,7 @@ export const ModalTitle = styled.h2`
   font-weight: 600;
   text-align: center;
   color: #424f5e;
+  margin-bottom: 27px;
 `;
 
 export const CloseBtn = styled.button`

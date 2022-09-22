@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { ModalBox, ModalPanel, CloseBtn, ModalTitle } from "../UI";
 
 const Register = () => {

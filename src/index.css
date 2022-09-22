@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Tailwind mixins */
+
+@layer components {
+  .input-default {
+    @apply w-full border border-lightGray rounded-sm h-[60px] mb-2 bg-light p-5 text-base;
+  }
+}
+
 body {
   background-color: #f9fafb;
   margin: 0;
