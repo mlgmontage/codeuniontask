@@ -8,7 +8,7 @@ const Main = () => {
       <div className="text-base mb-[28px]">
         Предложения, которые любят наши клиенты
       </div>
-      <div className="w-[1242px] m-auto grid grid-cols-4 gap-[14px]">
+      <div className="w-[1240px] m-auto grid grid-cols-4 gap-[14px]">
         <Card />
         <Card />
         <Card />
