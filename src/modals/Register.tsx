@@ -3,23 +3,40 @@ import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
-import { Input, PasswordInput } from "../hooks/formik";
+import { Input, PasswordInput } from "../components/formik";
 import { ModalBox, ModalPanel, CloseBtn, ModalTitle, Button } from "../UI";
+import axios from "../api/axios";
+
+// NOTE: Design might not fully correspond to template, because there is required fields on API like "nickname" and "phone"
+// so I had to include these too.
 
 type RegisterFormT = {
-  login: string;
+  email: string;
+  nickname: string;
+  phone: string;
   password: string;
   confirmPassword: string;
 };
 
 const registerScheme = Yup.object().shape({
-  login: Yup.string()
+  email: Yup.string()
     .min(3, "Не меньше чем 3 символа")
     .email("Должно быть эл-почтой")
     .required("Обязательно"),
-  password: Yup.string()
-    .min(7, "Не меньше чес 7 символов")
+
+  nickname: Yup.string()
+    .min(3, "Не меньше чем 3 символа")
     .required("Обязательно"),
+
+  phone: Yup.number()
+    .typeError("Должно быть числом")
+    .min(11, "Минимум 11 символов")
+    .required("Обязательно"),
+
+  password: Yup.string()
+    .min(8, "Не меньше чем 8 символов")
+    .required("Обязательно"),
+
   confirmPassword: Yup.string()
     .required()
     .oneOf([Yup.ref("password"), null], "Пароль должно совпадать"),
@@ -30,7 +47,9 @@ const Register = () => {
   const [consent, setConsent] = useState(true);
 
   const initial: RegisterFormT = {
-    login: "",
+    email: "",
+    nickname: "",
+    phone: "",
     password: "",
     confirmPassword: "",
   };
@@ -42,13 +61,25 @@ const Register = () => {
         <ModalTitle>Зарегистрироваться</ModalTitle>
         <Formik
           initialValues={initial}
-          onSubmit={(values) => console.warn(values)}
+          onSubmit={(values, helpers) => {
+            helpers.setSubmitting(true);
+
+            axios
+              .post("/auth/registration/customer/new", values)
+              .then((res) => {
+                console.warn("registration answer", res);
+                helpers.setSubmitting(false);
+              });
+          }}
           validationSchema={registerScheme}
         >
-          {() => {
+          {(helpers) => {
             return (
               <Form>
-                <Input name="login" placeholder="Email" />
+                <Input name="email" placeholder="Email" />
+                <Input name="nickname" placeholder="Псевдоним" />
+                {/* TODO: Put input mask for "phone" input */}
+                <Input name="phone" placeholder="Телефон" />
                 <PasswordInput name="password" placeholder="Пароль" />
                 <PasswordInput
                   name="confirmPassword"
@@ -69,7 +100,7 @@ const Register = () => {
                   </div>
                 </label>
                 <Button
-                  disabled={consent}
+                  disabled={consent || helpers.isSubmitting}
                   className="h-[60px] w-full rounded-sm"
                 >
                   Войти

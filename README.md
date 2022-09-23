@@ -1,6 +1,8 @@
 # README
 
-Hello, my name is Abay. And this is my test task for **codeunion**.
+Hello, my name is Abay. And this is my test task for **codeunion**.<br>
+
+**NOTE**: API returning `CORS` error, so I could really finish it.
 
 ## Task
 

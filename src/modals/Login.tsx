@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
-import { Input, PasswordInput } from "../hooks/formik";
+import { Input, PasswordInput } from "../components/formik";
 import { ModalBox, ModalPanel, CloseBtn, ModalTitle, Button } from "../UI";
 
 type LoginFormT = {
